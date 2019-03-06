@@ -11,6 +11,7 @@ function leftClick() {
 
   prevImg.addClass("active");
 
+  dotSwitcher();
 }
 
 function rightClick(){
@@ -31,12 +32,33 @@ function rightClick(){
 
 function dotSwitcher(){
 
-  
+  var imgs=$(".middle-top-part > img");
+  var activeIndex;
 
-  console.log("cambiare il punto");
+  for (var i = 0; i < imgs.length; i++) {
+
+    var img=imgs.eq(i);
+
+    if (img.hasClass("active")) {
+      activeIndex=i;
+    }
+  }
+
+  console.log("active index" , activeIndex);
+
+  var fullDot=$(".dots-container > i.fas");
+  fullDot.removeClass("fas").addClass("far");
+
+  var dots=$(".dots-container > i");
+  var nextDot=dots.eq(activeIndex);
+
+  nextDot.removeClass("far").addClass("fas");
 }
 
-
+function dotClick() {
+  
+  console.log("dotclick");
+}
 
 
 
@@ -52,6 +74,9 @@ function init(){
 
   var leftArrow=$(".fa-chevron-left");
   leftArrow.click(leftClick);
+
+  var dots=$(".fa-circle");
+  dots.click(dotClick);
 }
 
 
