@@ -56,8 +56,19 @@ function dotSwitcher(){
 }
 
 function dotClick() {
-  
-  console.log("dotclick");
+
+  var me=$(this);
+  var meIndex=me.index();
+
+  var imgActive=$(".middle-top-part > img.active");
+  imgActive.removeClass("active");
+
+  var imgs=$(".middle-top-part > img");
+  var nextImg=imgs.eq(meIndex);
+
+  nextImg.addClass("active");
+
+  dotSwitcher();
 }
 
 
